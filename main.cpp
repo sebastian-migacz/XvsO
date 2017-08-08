@@ -22,14 +22,19 @@ int main(int argc, char** argv) {
 			ukladNaPlanszy[i][j]=i+j;
 	}
 	
-		for(int i=0;i<3;i++)
-	{
-		for(int j=0;j<3;j++)
-			cout<< ukladNaPlanszy[i][j];
-	}
 
 
 	Plansza nowa;
+	nowa.rysujPlansze(ukladNaPlanszy);
+	nowa.czyscPlansze(ukladNaPlanszy);
+	nowa.rysujPlansze(ukladNaPlanszy);
+	nowa.zaznaczPole(ukladNaPlanszy, 1, 2);
+	nowa.zaznaczPole(ukladNaPlanszy, 2, 2);
+	nowa.zaznaczPole(ukladNaPlanszy, 3, 2);
+	nowa.zaznaczPole(ukladNaPlanszy, 4, 1);
+	nowa.zaznaczPole(ukladNaPlanszy, 5, 1);
+	nowa.zaznaczPole(ukladNaPlanszy, 6, 1);
+	nowa.zaznaczPole(ukladNaPlanszy, 8, 2);
 	nowa.rysujPlansze(ukladNaPlanszy);
 	cout<<"\nzaczynamy\n";
 	return 0;
