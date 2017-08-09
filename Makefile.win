@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o Plansza.o
-LINKOBJ  = main.o Plansza.o
+OBJ      = main.o Plansza.o Gracz.o Menu.o
+LINKOBJ  = main.o Plansza.o Gracz.o Menu.o
 LIBS     = -L"G:/Programy/Dev-Cpp/MinGW64/lib" -L"G:/Programy/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"G:/Programy/Dev-Cpp/MinGW64/include" -I"G:/Programy/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"G:/Programy/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"G:/Programy/Dev-Cpp/MinGW64/include" -I"G:/Programy/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"G:/Programy/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"G:/Programy/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -29,3 +29,9 @@ main.o: main.cpp
 
 Plansza.o: Plansza.cpp
 	$(CPP) -c Plansza.cpp -o Plansza.o $(CXXFLAGS)
+
+Gracz.o: Gracz.cpp
+	$(CPP) -c Gracz.cpp -o Gracz.o $(CXXFLAGS)
+
+Menu.o: Menu.cpp
+	$(CPP) -c Menu.cpp -o Menu.o $(CXXFLAGS)

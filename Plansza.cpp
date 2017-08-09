@@ -64,7 +64,7 @@ void Plansza::zaznaczPole(int tab[3][3],int pozycja, int var)
 	}
 	
 	
-}
+}// f-cja wypelniajaca plansze znakami X oraz O 
 
 
 char Plansza::ustalZnak(int zn)
