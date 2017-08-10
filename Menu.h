@@ -6,7 +6,9 @@ class Menu
 	public:
 		
 		void wyswietlPodpisyMenu();
+		void wyswietlPodpisyMenu2();
 		void uruchomMenu();
+		void wyborGraczy();
 		
 	 
 	protected:

@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Rozgrywka.h"
 #include <iostream>
 
 using namespace std;
@@ -10,8 +11,47 @@ void Menu::wyswietlPodpisyMenu()
 	cout<<"     1- Nowa Gra\n     0- Wyjscie\n"; 
 }//f-cj wyswietla menu
 
-void Menu::gra()
+void Menu::wyswietlPodpisyMenu2()
 {
+	cout<<"\n     Gra w kolko i krzyzyk\n-------------------------------------\n    MENU\n";
+	cout<<"     1- Jeden Gracz\n     2- Dwoch Graczy\n     0- Wstecz\n"; 
+}//f-cj wyswietla menu
+
+
+
+void Menu::wyborGraczy()
+{
+		bool toExit=0;
+		int control=0;
+	
+	do
+	{
+		system("cls");
+		this->wyswietlPodpisyMenu2();
+		cin>>control;
+		switch(control)
+		{
+			case 1:
+
+									
+			break;
+			
+			case 2:
+					Rozgrywka nowaGra;
+					nowaGra.gra();
+			
+			break;
+			
+			case 0:
+				toExit=1;
+			break;
+		}
+			
+		
+		
+		
+	}while(toExit==false);
+	
 	
 }
 
@@ -41,7 +81,7 @@ void Menu::uruchomMenu()
 				
 					if(controlTemp=='y' || controlTemp=='Y')
 						{
-							
+							this->wyborGraczy();
 						}
 					else if(controlTemp=='n' || controlTemp=='N')
 						{
