@@ -6,6 +6,13 @@
 using namespace std;
 
 
+void Rozgrywka::runda(Gracz player1, Gracz player2)
+{
+	
+	
+}
+
+
 void Rozgrywka::gra()
 {
 	bool toExitTemp=0;
@@ -44,6 +51,40 @@ void Rozgrywka::gra()
 				}while(controler!=1 && controler!=0);
 				
 			}
+			
+		switch(controler)
+		{
+			case 0:
+				toExitTemp=1;
+			break;
+			
+			case 1:
+				
+				cout<<"\n\n     Który gracz zaczyna?\n";
+				cout<<"     1- "<<GraczPierwszy.getName()<<endl;
+				cout<<"     2- "<<GraczDrugi.getName()<<endl;;
+				short int controler2;
+				do
+				{
+					cin>>controler2;
+					if(controler2!=1 && controler2!=2)
+					cout<<"    Wpisz 1 lub 2 !!!!!!\n";
+				}while(controler2!=1 && controler2!=2);
+				
+				if(controler2==1)
+				{
+					
+				}
+				
+				if(controler2==2)
+				{
+					
+				}
+				 
+				
+				
+			break;
+		}
 		
 		
 		
