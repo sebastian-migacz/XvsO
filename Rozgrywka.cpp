@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz * player)
+bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz *player)
 {
 	int stan =0;
 	for(int i=0;i<2;i++)
@@ -37,10 +37,10 @@ bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz * player)
 			
 	if(stan==1)
 	{
-	player.addPkt();
-	player.wyswietl();
-	cout<<"pkt"<<player.getPkt()<<endl;
-	cout<<" Wygrywa "<<player.getName();
+	player->addPkt();
+	player->wyswietl();
+	cout<<"pkt"<<player->getPkt()<<endl;
+	cout<<" Wygrywa "<<player->getName();
 	system("pause");	
 	return 1;
 	}
@@ -49,7 +49,7 @@ bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz * player)
 }//sprawdzenie czy gracz wygral
 
 
-void Rozgrywka::runda(Gracz player1, Gracz player2)
+void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 {
 	Plansza AktualnaPlansza;
 	bool koniec=0;
@@ -60,7 +60,7 @@ void Rozgrywka::runda(Gracz player1, Gracz player2)
 	{
 		system("cls");
 		AktualnaPlansza.rysujPlansze(tab);
-		cout<<"\n\n   Teraz kolej gracza  "<<player1.getName()<<endl;
+		cout<<"\n\n   Teraz kolej gracza  "<<player1->getName()<<endl;
 		do
 		{
 			cin>>wyborPolaNaPlanszy;
@@ -76,7 +76,7 @@ void Rozgrywka::runda(Gracz player1, Gracz player2)
 		
 			system("cls");
 			AktualnaPlansza.rysujPlansze(tab);
-			cout<<"\n\n   Teraz kolej gracza  "<<player2.getName()<<endl;
+			cout<<"\n\n   Teraz kolej gracza  "<<player2->getName()<<endl;
 			do
 			{
 				cin>>wyborPolaNaPlanszy;
@@ -121,20 +121,19 @@ void Rozgrywka::gra()
 		GraczPierwszy.wyswietl();
 		GraczDrugi.wyswietl();
 		cout<<"\n\n";
-		
-		if(controler==0)
-			{
-				cout<<"\n     Gra w kolko i krzyzyk\n-------------------------------------\n";
-				cout<<"     1- Graj\n     0-Wyjscie\n\n";
+
+		cout<<"\n     Gra w kolko i krzyzyk\n-------------------------------------\n";
+		cout<<"     1- Graj\n     0-Wyjscie\n\n";
 				
 				do
 				{
+					
 					cin>>controler;
 					if(controler!=1 && controler!=0)
 					cout<<"    Wpisz 1 lub 0 !!!!!!\n";
-				}while(controler!=1 && controler!=0);
+				}while(controler!=1 && controler!=0); //wymuszenie ustawienia w controllerze wartosci ktore sa w switch
 				
-			}
+			
 			
 		switch(controler)
 		{
@@ -157,13 +156,13 @@ void Rozgrywka::gra()
 				
 				if(controler2==1)
 				{
-					runda(GraczPierwszy, GraczDrugi);
+					runda(&GraczPierwszy, &GraczDrugi);
 					
 				}
 				
 				if(controler2==2)
 				{
-					runda(GraczDrugi, GraczPierwszy);
+					runda(&GraczDrugi, &GraczPierwszy);
 				}
 				 
 				
@@ -176,7 +175,5 @@ void Rozgrywka::gra()
 		
 		
 	}while(toExitTemp==0);
-	
 
-	cout<<"\n     Gra w kolko i krzyzyk\n-------------------------------------\n    MENU\n";
 }

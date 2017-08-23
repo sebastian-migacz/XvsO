@@ -27,10 +27,10 @@ int Gracz::getPkt()
 
 void Gracz::addPkt()
 {
-	this->pkt=this->pkt+1;
+	pkt=pkt+1;
 }//f-cja zwiekszajaca liczy pkt gracza po wygranej
 
 void Gracz::wyswietl()
 {
-	cout<<"		"<< this->name<<"  ------>  "<< this->pkt<<endl;
+	cout<<"		"<< this->name<<"  ------>  "<< pkt<<endl;
 }//f-cja wyswietlajaca nazwe gracza oraz ilosc pkt
