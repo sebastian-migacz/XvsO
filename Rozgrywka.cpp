@@ -9,7 +9,8 @@ using namespace std;
 bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz *player)
 {
 	int stan =0;
-	for(int i=0;i<2;i++)
+	bool stan2=0;
+	for(int i=0;i<3;i++)
 	{
 		if(tab[i][0]==tab[i][1] && tab[i][1]==tab[i][2] && tab[i][1]!=0)
 			{
@@ -17,7 +18,7 @@ bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz *player)
 			}
 	}
 	
-	for(int i=0;i<2;i++)
+	for(int i=0;i<3;i++)
 	{
 		if(tab[0][i]==tab[1][i] && tab[2][i]==tab[1][i] && tab[1][i]!=0)
 			{
@@ -37,12 +38,32 @@ bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz *player)
 			
 	if(stan==1)
 	{
-	player->addPkt();
-	player->wyswietl();
-	cout<<"pkt"<<player->getPkt()<<endl;
-	cout<<" Wygrywa "<<player->getName();
-	system("pause");	
-	return 1;
+		player->addPkt();
+		cout<<"pkt"<<player->getPkt()<<endl;
+		cout<<" Wygrywa "<<player->getName()<<endl;
+		system("pause");	
+		return 1;
+	}
+	else if(stan==0)
+	{
+		stan2=1;
+		for(int a=0;a<3;a++)
+		{
+			for(int b=0;b<3;b++)
+				{
+					if(tab[a][b]==0)
+					stan2 =0;
+					
+				}
+		}
+	}
+	
+	if(stan2==1)
+	{
+		cout<<" Brak mozliwosci ruchu. REMIS !!\n"<<endl;
+		system("pause");	
+		return 1;
+		
 	}
 	else
 	return 0;
@@ -53,7 +74,7 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 {
 	Plansza AktualnaPlansza;
 	bool koniec=0;
-	int wyborPolaNaPlanszy;
+
 	int tab[3][3];
 	AktualnaPlansza.czyscPlansze(tab);
 	do
@@ -61,14 +82,11 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 		system("cls");
 		AktualnaPlansza.rysujPlansze(tab);
 		cout<<"\n\n   Teraz kolej gracza  "<<player1->getName()<<endl;
-		do
-		{
-			cin>>wyborPolaNaPlanszy;
-			if(wyborPolaNaPlanszy<0 || wyborPolaNaPlanszy>8)
-			cout<<"\n   Musisz wybrac liczbe od 0 do 8!!!\n";
-		}while(wyborPolaNaPlanszy<0 || wyborPolaNaPlanszy>8);
+	
 		
-		AktualnaPlansza.zaznaczPole(tab, wyborPolaNaPlanszy, 1); //koniec tury 1-sego gracza
+		AktualnaPlansza.zaznaczPole(tab, 1); //koniec tury 1-sego gracza
+		system("cls");
+		AktualnaPlansza.rysujPlansze(tab);
 		koniec=sprawdzWygrana(tab,player1);
 		
 		if(koniec==0)
@@ -77,14 +95,10 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 			system("cls");
 			AktualnaPlansza.rysujPlansze(tab);
 			cout<<"\n\n   Teraz kolej gracza  "<<player2->getName()<<endl;
-			do
-			{
-				cin>>wyborPolaNaPlanszy;
-				if(wyborPolaNaPlanszy<0 || wyborPolaNaPlanszy>8)
-				cout<<"\n   Musisz wybrac liczbe od 0 do 8!!!\n";
-			}while(wyborPolaNaPlanszy<0 || wyborPolaNaPlanszy>8);
 			
-			AktualnaPlansza.zaznaczPole(tab, wyborPolaNaPlanszy, 2);//koniec tury 2-giego gracza
+			AktualnaPlansza.zaznaczPole(tab, 2);//koniec tury 2-giego gracza
+			system("cls");
+			AktualnaPlansza.rysujPlansze(tab);
 			koniec=sprawdzWygrana(tab,player2);
 		}
 		
@@ -143,7 +157,7 @@ void Rozgrywka::gra()
 			
 			case 1:
 				
-				cout<<"\n\n     Który gracz zaczyna?\n";
+				cout<<"\n\n     Ktory gracz zaczyna?\n";
 				cout<<"     1- "<<GraczPierwszy.getName()<<endl;
 				cout<<"     2- "<<GraczDrugi.getName()<<endl;;
 				short int controler2;

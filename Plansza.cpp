@@ -12,56 +12,147 @@ void Plansza::czyscPlansze(int tab[3][3])
 	}	
 }//f-cja czysci plansze przez zerowanie macierzy
 
-void Plansza::zaznaczPole(int tab[3][3],int pozycja, int var)
+void Plansza::zaznaczPole(int tab[3][3], int var)
 {
-	switch(pozycja)
+	bool toExit=0;
+	int wyborPolaNaPlanszy;
+	
+		do
 	{
-		case 0:
-			tab[0][0]=var;
+		cin>>wyborPolaNaPlanszy;
+		if(wyborPolaNaPlanszy<1 || wyborPolaNaPlanszy>9)
+		cout<<"\n   Musisz wybrac liczbe od 1 do 9!!!\n";
+	}while(wyborPolaNaPlanszy<1 || wyborPolaNaPlanszy>9);
+		
+	do
+	{
+	
+	switch(wyborPolaNaPlanszy)
+	{
+		case 7:
+			if(tab[0][0]==0)
+				{
+				tab[0][0]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
+		break;
+		
+		case 8:
+			if(tab[0][1]==0)
+				{
+				tab[0][1]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 			
 		break;
 		
-		case 1:
-			tab[0][1]=var;
-			
-		break;
-		
-		case 2:
-			tab[0][2]=var;
-			
-		break;
-		
-		case 3:
-			tab[1][0]=var;
+		case 9:
+			if(tab[0][2]==0)
+				{
+				tab[0][2]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 			
 		break;
 		
 		case 4:
-			tab[1][1]=var;
+				if(tab[1][0]==0)
+				{
+				tab[1][0]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 			
 		break;
 		
 		case 5:
-			tab[1][2]=var;
-			
+			if(tab[1][1]==0)
+				{
+				tab[1][1]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}		
 		break;
 		
 		case 6:
-			tab[2][0]=var;
+			if(tab[1][2]==0)
+				{
+				tab[1][2]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 			
 		break;
 		
-		case 7:
-			tab[2][1]=var;
+		case 1:
+			if(tab[2][0]==0)
+				{
+				tab[2][0]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 			
 		break;
 		
-		case 8:
-			tab[2][2]=var;
-			
+		case 2:
+			if(tab[2][1]==0)
+				{
+				tab[2][1]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
+		break;
+		
+		case 3:
+			if(tab[2][2]==0)
+				{
+				tab[2][2]=var;
+				toExit=1;
+				}
+			else
+				{
+					cout<<"\nMusisz podac nie zajete pole !!!!\n";
+					cin>>wyborPolaNaPlanszy;
+				}
 		break;
 		
 	}
+	}while(toExit==0);
 	
 	
 }// f-cja wypelniajaca plansze cyframi 1 oraz odpowiadajacymi za X oraz O 

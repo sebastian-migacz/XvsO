@@ -76,7 +76,7 @@ void Menu::uruchomMenu()
 				do
 				{
 					
-					cout<<"\n\n  Czy na pewno chcesz rozpocz¹æ nowa gre? [y/n]\n";
+					cout<<"\n\n  Czy na pewno chcesz rozpoczac nowa gre? [y/n]\n";
 					cin>>controlTemp;
 				
 					if(controlTemp=='y' || controlTemp=='Y')
