@@ -12,7 +12,7 @@ bool Rozgrywka::sprawdzWygrana(int tab[3][3], Gracz *player)
 	bool stan2=0;
 	for(int i=0;i<3;i++)
 	{
-		if(tab[i][0]==tab[i][1] && tab[i][1]==tab[i][2] && tab[i][1]!=0)
+		if(tab[ i][0]==tab[i][1] && tab[i][1]==tab[i][2] && tab[i][1]!=0)
 			{
 				stan=1;
 			}
@@ -83,8 +83,11 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 		AktualnaPlansza.rysujPlansze(tab);
 		cout<<"\n\n   Teraz kolej gracza  "<<player1->getName()<<endl;
 	
+		if(player1->getIsBot()==0)
+		AktualnaPlansza.zaznaczPole(tab, 1);
+		else
+		AktualnaPlansza.zaznaczPoleSI(tab, 1);	//koniec tury 1-sego gracza
 		
-		AktualnaPlansza.zaznaczPole(tab, 1); //koniec tury 1-sego gracza
 		system("cls");
 		AktualnaPlansza.rysujPlansze(tab);
 		koniec=sprawdzWygrana(tab,player1);
@@ -94,9 +97,14 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 		
 			system("cls");
 			AktualnaPlansza.rysujPlansze(tab);
-			cout<<"\n\n   Teraz kolej gracza  "<<player2->getName()<<endl;
+   			cout<<"\n\n   Teraz kolej gracza  "<<player2->getName()<<endl;
 			
-			AktualnaPlansza.zaznaczPole(tab, 2);//koniec tury 2-giego gracza
+	
+		if(player2->getIsBot()==0)
+		AktualnaPlansza.zaznaczPole(tab, 2);
+		else
+		AktualnaPlansza.zaznaczPoleSI(tab, 2);	//koniec tury 2-giego gracza
+			
 			system("cls");
 			AktualnaPlansza.rysujPlansze(tab);
 			koniec=sprawdzWygrana(tab,player2);
@@ -110,8 +118,8 @@ void Rozgrywka::runda(Gracz *player1, Gracz *player2)
 }
 
 
-void Rozgrywka::gra()
-{
+void Rozgrywka::gra(bool bot)
+{ 
 	bool toExitTemp=0;
 	int controler=0;
 	
@@ -119,12 +127,16 @@ void Rozgrywka::gra()
 	string nazwaGracza;
 	cout<<"\n\n     Podaj nazwe pierwszego Gracza.\n";
 	cin>>nazwaGracza;
+	Gracz GraczPierwszy(nazwaGracza, 0);
 	
-	Gracz GraczPierwszy(nazwaGracza);
-	
-	cout<<"\n\n     Podaj nazwe drugiego Gracza.\n";
-	cin>>nazwaGracza;
-	Gracz GraczDrugi(nazwaGracza);
+	if(bot==0)
+	{
+		cout<<"\n\n     Podaj nazwe drugiego Gracza.\n";
+		cin>>nazwaGracza;
+		
+	}
+
+	Gracz GraczDrugi(nazwaGracza,bot);
 
 	
 

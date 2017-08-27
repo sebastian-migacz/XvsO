@@ -5,11 +5,21 @@ Gracz::Gracz()
 {
 }// konstruktor domyslny
 
-Gracz::Gracz(string nameTemp)
+Gracz::Gracz(string nameTemp, bool isBotTemp)
 {
 	this->pkt=0;
-	this->name=nameTemp;
+	if(isBotTemp==0)
+		{
+			this->name=nameTemp;
+			this->isBot=0;
+		}
+	else
+		{
+			this->name="Bot";
+			this->isBot=1;		
+		}
 }//konstruktor uwzgledniajacy podanie nazwy gracza
+
 
 Gracz::~Gracz()
 {
@@ -19,6 +29,11 @@ string Gracz::getName()
 {
 	return this->name;
 }//GET NAME f-cja zwracajaca nazwe gracza
+
+bool Gracz::getIsBot()
+{
+	return this->isBot;
+}//GET isBot f-cja zwracajaca zmienna isBot do okreslania czy to gracz czy cpu
 
 int Gracz::getPkt()
 {

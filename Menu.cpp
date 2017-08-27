@@ -28,17 +28,19 @@ void Menu::wyborGraczy()
 	{
 		system("cls");
 		this->wyswietlPodpisyMenu2();
+		Rozgrywka nowaGra;
 		cin>>control;
 		switch(control)
 		{
 			case 1:
-
+					
+					nowaGra.gra(1);
 									
 			break;
 			
 			case 2:
-					Rozgrywka nowaGra;
-					nowaGra.gra();
+
+					nowaGra.gra(0);
 			
 			break;
 			
