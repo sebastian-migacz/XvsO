@@ -194,12 +194,39 @@ void Plansza::zaznaczPoleSI(int tab[3][3], int var)
 				{
 					if(a==1 && b==1)
 					continue;
-					if(tab[a][b]==tab[1][1] && tab[1][1]==var && winCheck==0)
+					if(tab[a][b]==tab[1][1] && tab[1][1]==var && winCheck==0 && tab2[a][b]==0)
 					{
 						tab2[a][b]=var;
 						winCheck = 1;
 					}
 				}
+			}
+				
+			for(int a =0;a<3;a++)
+			{
+				if(winCheck==0 && tab[a][0]==tab[a][1] && a!=1 && tab[2-a][2]==0 && tab[a][0]==var)
+					{
+						winCheck = 1;
+						tab2[2-a][0]=var;	
+					}
+					
+				if(winCheck ==0 && tab[a][1]==tab[a][2] && a!=1 && 	tab2[2-a][2]==0 && tab[a][2]==var)
+					{
+						winCheck = 1;
+						tab2[2-a][2]=var;	
+					}
+				
+				if(winCheck==0 && tab[0][a]==tab[1][a] && a!=1 && tab2[0][2-a]==0 && tab[1][a]==var )
+					{
+						winCheck = 1;
+						tab2[0][2-a]=var;	
+					}
+					
+				if(winCheck ==0 && tab[1][a]==tab[2][a] && a!=1 && tab2[2][2-a]==0 && tab[2][a]==var)
+					{
+						winCheck = 1;
+						tab2[2][2-a]=var;	
+					} 
 			} //sprawdzenie czy jest mo¿liwe zaznaczenie w tablicy odwrotnej pola tab by uzyskac wygrana w tej turze 
 			
 			if(winCheck==0)
@@ -211,7 +238,7 @@ void Plansza::zaznaczPoleSI(int tab[3][3], int var)
 					{
 						if(a==1 && b==1)
 						continue;
-						if(tab[a][b]==tab[1][1] && tab[1][1]!=var && tab[1][1]!=0 && loseCheck==0)
+						if(tab[a][b]==tab[1][1] && tab[1][1]!=var && tab[1][1]!=0 && loseCheck==0 && tab2[a][b]==0)
 						{
 							tab2[a][b]=var;
 							loseCheck = 1;
